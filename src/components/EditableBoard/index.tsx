@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-interface EditableBoard {
+export interface EditableBoard {
   width: number;
   height: number;
   left?: number;

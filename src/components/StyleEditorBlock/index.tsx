@@ -14,7 +14,7 @@ import useColor from "../../hooks/useColor";
 import useImage from "../../hooks/useImage";
 import useMouseEvent from "../../hooks/useMouseEvent";
 
-interface StyleEditorBlockProps extends EditorProps {
+export interface StyleEditorBlockProps extends EditorProps {
   initialColor?: string;
   initialImage?: string;
 }

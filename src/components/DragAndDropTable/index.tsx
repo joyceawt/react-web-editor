@@ -3,19 +3,19 @@ import styled from "styled-components";
 
 import useDragAndDrop from "../../hooks/useDragAndDrop";
 
-interface DragAndDropTableProps {
+export interface DragAndDropTableProps {
   color?: string;
   isVertical: boolean;
   children?: ReactNode;
 }
 
-interface DragAndDropTableStyle {
+export interface DragAndDropTableStyle {
   backgroundColor?: string;
   color?: string;
   isVertical?: boolean;
 }
 
-interface DragAndDropItemStyle extends DragAndDropTableStyle {
+export interface DragAndDropItemStyle extends DragAndDropTableStyle {
   width: number;
   height: number;
 }

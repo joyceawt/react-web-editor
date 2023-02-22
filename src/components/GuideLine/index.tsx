@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ComponentStyle } from "../../types/ui";
 import { calculateCenter, isLocatedCenter } from "../../utils/ui";
 
-interface LineProps {
+export interface LineProps {
   left?: number;
   top?: number;
   height?: number;
@@ -12,7 +12,7 @@ interface LineProps {
   unit: string;
 }
 
-interface GuideLine extends ComponentStyle {
+export interface GuideLine extends ComponentStyle {
   boardWidth?: number;
   boardHeight?: number;
   unit: string;
@@ -28,26 +28,33 @@ const GuideLine: React.FC<GuideLine> = ({
   unit,
 }): React.ReactElement => {
   const { centerX, centerY } = calculateCenter(width, height);
-  const { isCenterX, isCenterY } = isLocatedCenter(width, height, top, left, boardWidth, boardHeight);
+  const { isCenterX, isCenterY } = isLocatedCenter(
+    width,
+    height,
+    top,
+    left,
+    boardWidth,
+    boardHeight
+  );
 
   return (
     <Wrapper>
-      {isCenterX &&
+      {isCenterX && (
         <VerticalLine
           top={top}
           left={centerX}
           height={boardHeight}
           unit={unit}
         />
-      }
-      {isCenterY &&
+      )}
+      {isCenterY && (
         <HorizontalLine
           top={centerY}
           left={left}
           width={boardWidth}
           unit={unit}
         />
-      }
+      )}
     </Wrapper>
   );
 };
@@ -59,19 +66,19 @@ const Wrapper = styled.div`
 `;
 
 const HorizontalLine = styled.span<LineProps>`
-  top: ${({ top, unit }) => top ? `${top}${unit}` : 0};
-  left: ${({ left, unit }) => left ? `${-left}${unit}` : 0};
-  width: ${({ width, unit }) => width ? `${width}${unit}` : 0};
-  border-top: 1px solid #FB99BC;
+  top: ${({ top, unit }) => (top ? `${top}${unit}` : 0)};
+  left: ${({ left, unit }) => (left ? `${-left}${unit}` : 0)};
+  width: ${({ width, unit }) => (width ? `${width}${unit}` : 0)};
+  border-top: 1px solid #fb99bc;
   position: absolute;
   z-index: 10;
 `;
 
 const VerticalLine = styled.span<LineProps>`
-  top: ${({ top, unit }) => top ? `${-top}${unit}` : 0};
-  left: ${({ left, unit }) => left ? `${left}${unit}` : 0};
-  height: ${({ height, unit }) => height ? `${height}${unit}` : 0};
-  border-left: 1px solid #FB99BC;
+  top: ${({ top, unit }) => (top ? `${-top}${unit}` : 0)};
+  left: ${({ left, unit }) => (left ? `${left}${unit}` : 0)};
+  height: ${({ height, unit }) => (height ? `${height}${unit}` : 0)};
+  border-left: 1px solid #fb99bc;
   position: absolute;
   z-index: 10;
 `;

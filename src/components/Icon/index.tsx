@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-interface IconProps {
+export interface IconProps {
   children?: ReactNode;
   top?: number;
   right?: number;

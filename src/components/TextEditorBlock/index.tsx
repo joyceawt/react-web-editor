@@ -8,7 +8,11 @@ import CoordinatesTag from "../CoordinatesTag";
 import { ComponentStyle, EditorProps } from "../../types/ui";
 import { DIRECTIIONS } from "../../constants/location";
 import EditorBlockWrapper from "../shared/EditorBlockWrapper";
-import { EDITOR_ICON_RIGHT, FIRST_EDITOR_ICON_TOP, SECOND_EDITOR_ICON_TOP } from "../../constants/ui";
+import {
+  EDITOR_ICON_RIGHT,
+  FIRST_EDITOR_ICON_TOP,
+  SECOND_EDITOR_ICON_TOP,
+} from "../../constants/ui";
 import { generateHtml } from "../../utils/ui";
 import GuideLine from "../GuideLine";
 import Icon from "../Icon";
@@ -22,7 +26,7 @@ import useResize from "../../hooks/useResize";
 import useText from "../../hooks/useText";
 import TextEditor from "../TextEditor";
 
-interface TextEditorBlockProps extends EditorProps {
+export interface TextEditorBlockProps extends EditorProps {
   initialFontSize?: number;
   initialFontColor?: string;
   initialFontStyle?: string;
@@ -59,11 +63,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     resizeBoardOption: parentStyle,
   });
 
-  const {
-    isMouseOver,
-    handleMouseLeave,
-    handleMouseOver,
-  } = useMouseEvent();
+  const { isMouseOver, handleMouseLeave, handleMouseOver } = useMouseEvent();
 
   const {
     textRef,
@@ -83,26 +83,21 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     initialText,
   });
 
-  const {
-    handleDragStart,
-    handleDragEnd,
-  } = useDraggable({
+  const { handleDragStart, handleDragEnd } = useDraggable({
     ...componentStyle,
     onDrag: setComponentStyle,
     dragBoardOption: parentStyle,
     unit,
   });
 
-  const {
-    handleFontColorChange,
-    color,
-  } = useColor({ initialColor: initialFontColor});
+  const { handleFontColorChange, color } = useColor({
+    initialColor: initialFontColor,
+  });
 
-  const {
-    sliderRef,
-    value,
-    handleValueChange,
-  } = useSlider({ max: SLIDER_MAX, initialValue: initialFontSize });
+  const { sliderRef, value, handleValueChange } = useSlider({
+    max: SLIDER_MAX,
+    initialValue: initialFontSize,
+  });
 
   return (
     <EditorBlockWrapper
@@ -114,7 +109,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
     >
-      {isMouseOver &&
+      {isMouseOver && (
         <>
           <ButtonHandler />
           {!isEditing && (
@@ -154,7 +149,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
             unit={unit}
           />
         </>
-      }
+      )}
       <TextEditor
         html={innerHTML}
         fontStyle={fontStyle}
