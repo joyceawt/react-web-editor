@@ -96,9 +96,9 @@ const DropDownIcon = styled.div<DropDownStyleProps>`
 `;
 
 const DropDownItem = styled.div<DropDownItemProps>`
-  padding: 10px;
+  padding: 5px;
   font-weight: 1000;
-  font-size: 25px;
+  font-size: 17px;
   border-radius: 10px;
   ${({ isSelected }) => isSelected && BoxInnerShadow};
 
