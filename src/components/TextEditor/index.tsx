@@ -40,6 +40,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
   onFontButtonClick,
   fontName,
   color,
+  customMenuOptions
 }): React.ReactElement => {
   return (
     <HelmetProvider>
@@ -68,6 +69,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
             onStyleButtonClick={onStyleButtonClick}
             onFontButtonClick={onFontButtonClick}
             fontStyle={fontStyle}
+            customMenuOptions={customMenuOptions}
           />
         )}
       </FontStyle>

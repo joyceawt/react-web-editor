@@ -46,6 +46,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
   initialFontStyle,
   initialText,
   initialFontName,
+  customMenuOptions,
 }): React.ReactElement => {
   const innerHtml = initialText && generateHtml(initialText);
   const [html, setHtml] = useState(innerHtml || INITIAL_TEXT);
@@ -164,6 +165,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
         onFontButtonClick={handleFontButtonClick}
         fontName={fontName}
         color={color}
+        customMenuOptions={customMenuOptions}
       />
     </EditorBlockWrapper>
   );
