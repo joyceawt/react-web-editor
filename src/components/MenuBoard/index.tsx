@@ -98,7 +98,7 @@ const Board = styled.div`
   display: flex;
   flex-direction: column;
   width: 12rem;
-  height: 16.5rem;
+  height: 18rem;
   top: -2rem;
   right: -15rem;
   padding: 0.5rem;
