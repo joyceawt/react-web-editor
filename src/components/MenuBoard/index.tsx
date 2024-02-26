@@ -26,6 +26,7 @@ interface MenuBoardProps {
   fontStyle: string;
   onStyleButtonClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   onFontButtonClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
+  customMenuOptions?: () => React.ReactNode;
 }
 
 const MenuBoard: React.FC<MenuBoardProps> = ({

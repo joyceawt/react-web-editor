@@ -19,6 +19,7 @@ interface TextEditorProps {
   onFontButtonClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
   fontName: string;
   color?: string;
+  customMenuOptions?: () => React.ReactNode;
 }
 
 interface TextBoardStyle {
