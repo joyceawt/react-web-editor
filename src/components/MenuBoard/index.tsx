@@ -36,6 +36,7 @@ const MenuBoard: React.FC<MenuBoardProps> = ({
   sliderValue,
   onStyleButtonClick,
   onFontButtonClick,
+  customMenuOptions,
 }): React.ReactElement => {
   return (
     <Board>
@@ -88,6 +89,7 @@ const MenuBoard: React.FC<MenuBoardProps> = ({
           </TextButton>
         ))}
       </MenuOption>
+      {customMenuOptions && customMenuOptions()}
     </Board>
   );
 };
