@@ -18,6 +18,7 @@ interface DropDownItemProps {
 const DropDown: React.FC<DropDownProps> = ({
   items,
   onClick,
+  label,
 }): React.ReactElement => {
   const {
     handleItemClick,
@@ -35,7 +36,7 @@ const DropDown: React.FC<DropDownProps> = ({
   return (
     <DropDownBoard>
       <DropDownHeader onClick={handleDropDownClick}>
-        {selectedItem.label.length === 0 ? DEFAULT_DROP_DOWN_MESSAGE : selectedItem.label}
+        {selectedItem.label.length === 0 ? label || DEFAULT_DROP_DOWN_MESSAGE : selectedItem.label}
         <DropDownIcon isDropDownOpen={isDropDownOpen}>
           <BiChevronRight />
         </DropDownIcon>
@@ -95,9 +96,9 @@ const DropDownIcon = styled.div<DropDownStyleProps>`
 `;
 
 const DropDownItem = styled.div<DropDownItemProps>`
-  padding: 10px;
+  padding: 5px;
   font-weight: 1000;
-  font-size: 25px;
+  font-size: 17px;
   border-radius: 10px;
   ${({ isSelected }) => isSelected && BoxInnerShadow};
 
