@@ -19,7 +19,6 @@ interface TextEditorProps {
   onFontButtonClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
   fontName: string;
   color?: string;
-  customClasses: string;
   customMenuOptions?: () => React.ReactNode;
 }
 
@@ -43,7 +42,6 @@ const TextEditor: React.FC<TextEditorProps> = ({
   fontName,
   color,
   customMenuOptions,
-  customClasses = "",
 }): React.ReactElement => {
   return (
     <HelmetProvider>
@@ -54,7 +52,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
       </Helmet>
       <FontStyle>
         <TextBoard
-          className={`${fontStyle} ${fontName} ${customClasses}`}
+          className={`${fontStyle} ${fontName}`}
           contentEditable
           ref={componentRef}
           dangerouslySetInnerHTML={html}

@@ -32,7 +32,6 @@ export interface TextEditorBlockProps extends EditorProps {
   initialFontStyle?: string;
   initialText?: string;
   initialFontName?: string;
-  customClasses: string;
   customMenuOptions?: () => React.ReactNode;
 }
 
@@ -112,6 +111,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
       unit={unit}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
+      customClasses={customClasses}
     >
       {isMouseOver && (
         <>
@@ -168,7 +168,6 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
         onFontButtonClick={handleFontButtonClick}
         fontName={fontName}
         color={color}
-        customClasses={customClasses}
         customMenuOptions={customMenuOptions}
       />
     </EditorBlockWrapper>
