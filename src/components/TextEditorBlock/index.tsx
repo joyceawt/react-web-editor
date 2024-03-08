@@ -32,6 +32,7 @@ export interface TextEditorBlockProps extends EditorProps {
   initialFontStyle?: string;
   initialText?: string;
   initialFontName?: string;
+  customClasses?: string | undefined;
   customMenuOptions?: () => React.ReactNode;
 }
 
@@ -48,6 +49,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
   initialText,
   initialFontName,
   customMenuOptions,
+  customClasses,
 }): React.ReactElement => {
   const innerHtml = initialText && generateHtml(initialText);
   const [html, setHtml] = useState(innerHtml || INITIAL_TEXT);
@@ -166,6 +168,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
         onFontButtonClick={handleFontButtonClick}
         fontName={fontName}
         color={color}
+        customClasses={customClasses}
         customMenuOptions={customMenuOptions}
       />
     </EditorBlockWrapper>
