@@ -32,7 +32,7 @@ export interface TextEditorBlockProps extends EditorProps {
   initialFontStyle?: string;
   initialText?: string;
   initialFontName?: string;
-  customClasses?: string | undefined;
+  customClasses: string;
   customMenuOptions?: () => React.ReactNode;
 }
 
