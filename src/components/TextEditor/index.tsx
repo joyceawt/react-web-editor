@@ -88,7 +88,7 @@ const TextBoard = styled.div.attrs<TextBoardStyle>(
 )<TextBoardStyle>`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   padding: 0;
   z-index: 11;
 
