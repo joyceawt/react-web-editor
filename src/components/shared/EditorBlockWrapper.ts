@@ -12,7 +12,7 @@ const EditorBlockWrapper = styled.div.attrs<EditorProps>(
     },
   })
 )<EditorProps>`
-  position: absolute;
+  position: relative;
 `;
 
 export default EditorBlockWrapper;
