@@ -23,7 +23,7 @@ const EditableBoard: React.FC<EditableBoard> = ({
   const boardRef = useRef<HTMLDivElement>(null);
   const [calculatedHeight, setCalculatedHeight] = useState(height || 0);
 
- useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (boardRef.current) {
         setCalculatedHeight(boardRef.current.scrollHeight);
