@@ -8,7 +8,7 @@ const EditorBlockWrapper = styled.div.attrs<EditorProps>(
       top: top && `${top}${unit}`,
       left: left && `${left}${unit}`,
       width: width && `${width}${unit}`,
-      height: left && `${height}${unit}`,
+      height: height && `${height}${unit}`,
     },
     className: customClasses
   })
