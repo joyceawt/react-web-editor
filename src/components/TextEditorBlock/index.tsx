@@ -107,7 +107,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     if (textRef.current) {
       setComponentStyle((prevStyle) => ({
         ...prevStyle,
-        height: textRef.current?.scrollHeight || 0,
+        height: Math.max(prevStyle.height, textRef.current?.scrollHeight || 0),
       }));
     }
   }, [html, textRef]);
