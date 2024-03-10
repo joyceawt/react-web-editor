@@ -24,10 +24,13 @@ const EditableBoard: React.FC<EditableBoard> = ({
   const [calculatedHeight, setCalculatedHeight] = useState(height || 0);
 
   useEffect(() => {
-    if (boardRef.current) {
-      const childrenHeight = boardRef.current.scrollHeight;
-      setCalculatedHeight(Math.max(height || 0, childrenHeight));
-    }
+    setCalculatedHeight((prevHeight) => {
+      if (boardRef.current) {
+        const childrenHeight = boardRef.current.scrollHeight;
+        return Math.max(prevHeight || 0, childrenHeight);
+      }
+      return height || 0;
+    });
   }, [children, height]);
   
   return (
