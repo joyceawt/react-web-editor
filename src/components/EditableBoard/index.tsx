@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState, useEffect } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 export interface EditableBoard {
@@ -20,25 +20,15 @@ const EditableBoard: React.FC<EditableBoard> = ({
   children,
   unit,
 }): React.ReactElement => {
-  const boardRef = useRef<HTMLDivElement>(null);
-  const [calculatedHeight, setCalculatedHeight] = useState(height || 0);
-
-  useEffect(() => {
-    if (boardRef.current) {
-      setCalculatedHeight(() => Math.max(height, boardRef.current?.scrollHeight || 0));
-    }
-  }, [children, height]);
 
   return (
     <Board
-      key={`board-${calculatedHeight}`}
       width={width}
-      height={calculatedHeight}
+      height={height}
       backgroundColor={backgroundColor}
       unit={unit}
       left={left}
       top={top}
-      ref={boardRef}
     >
       {children}
     </Board>
