@@ -29,6 +29,7 @@ export interface EditorProps extends ComponentStyle {
   parentStyle?: ComponentSize;
   unit: string;
   children?: ReactNode;
+  customClasses?: string;
 }
 
 export interface EditorBlockProps extends EditorProps {

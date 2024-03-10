@@ -41,7 +41,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
   onFontButtonClick,
   fontName,
   color,
-  customMenuOptions
+  customMenuOptions,
 }): React.ReactElement => {
   return (
     <HelmetProvider>

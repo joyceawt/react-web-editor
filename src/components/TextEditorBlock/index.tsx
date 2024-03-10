@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { BiText } from "react-icons/bi";
 import { GiMove } from "react-icons/gi";
@@ -48,6 +48,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
   initialText,
   initialFontName,
   customMenuOptions,
+  customClasses,
 }): React.ReactElement => {
   const innerHtml = initialText && generateHtml(initialText);
   const [html, setHtml] = useState(innerHtml || INITIAL_TEXT);
@@ -55,7 +56,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     top,
     left,
     width,
-    height,
+    height: height || 0,
   });
 
   const { handleMouseDown } = useResize({
@@ -68,7 +69,6 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
   const { isMouseOver, handleMouseLeave, handleMouseOver } = useMouseEvent();
 
   const {
-    textRef,
     handleInputChange,
     innerHTML,
     handleEditingMode,
@@ -84,6 +84,8 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     initialFontStyle,
     initialText,
   });
+  
+  const textRef = useRef<HTMLDivElement>(null);
 
   const { handleDragStart, handleDragEnd } = useDraggable({
     ...componentStyle,
@@ -101,6 +103,15 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
     initialValue: initialFontSize,
   });
 
+  useEffect(() => {
+    if (textRef.current) {
+      setComponentStyle((prevStyle) => ({
+        ...prevStyle,
+        height: Math.max(prevStyle.height, textRef.current?.scrollHeight || 0),
+      }));
+    }
+  }, [html, textRef]);
+
   return (
     <EditorBlockWrapper
       top={componentStyle.top}
@@ -110,6 +121,7 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
       unit={unit}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
+      customClasses={customClasses}
     >
       {isMouseOver && (
         <>
