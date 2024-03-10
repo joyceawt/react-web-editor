@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState, useLayoutEffect } from "react";
+import React, { ReactNode, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 export interface EditableBoard {
@@ -23,25 +23,15 @@ const EditableBoard: React.FC<EditableBoard> = ({
   const boardRef = useRef<HTMLDivElement>(null);
   const [calculatedHeight, setCalculatedHeight] = useState(height || 0);
 
-  useLayoutEffect(() => {
-    const updateHeight = () => {
-      if (boardRef.current) {
-        setCalculatedHeight(boardRef.current.scrollHeight);
-      }
-    };
-
-    updateHeight(); 
-
-    window.addEventListener("resize", updateHeight);
-    
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, [children]);
+  useEffect(() => {
+    if (boardRef.current) {
+      setCalculatedHeight(() => Math.max(height, boardRef.current?.scrollHeight || 0));
+    }
+  }, [children, height]);
 
   return (
     <Board
-      key={`board-${height}`}
+      key={`board-${calculatedHeight}`}
       width={width}
       height={calculatedHeight}
       backgroundColor={backgroundColor}
