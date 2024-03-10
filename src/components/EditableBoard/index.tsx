@@ -48,9 +48,8 @@ const EditableBoard: React.FC<EditableBoard> = ({
       unit={unit}
       left={left}
       top={top}
-      ref={boardRef}
     >
-      {children}
+      <div ref={boardRef}>{children}</div>
     </Board>
   );
 };
