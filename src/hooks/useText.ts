@@ -49,7 +49,7 @@ const useText = ({
       return;
     }
 
-    onChange(html);
+    onChange(currentHtml);
     setSavedHtml(sanitizeHtml(currentHtml, SANITIZE_CONFIGURATION));
   };
 
