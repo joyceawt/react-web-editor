@@ -110,7 +110,14 @@ const TextEditorBlock: React.FC<TextEditorBlockProps> = ({
         height: Math.max(prevStyle.height, textRef.current?.scrollHeight || 0),
       }));
     }
-  }, [html, textRef]);
+  }, [textRef]);
+
+  useEffect(() => {
+    if (initialText !== undefined) {
+      setHtml(initialText && generateHtml(initialText));
+    }
+  }, [initialText]);
+
 
   return (
     <EditorBlockWrapper
