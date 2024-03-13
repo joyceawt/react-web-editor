@@ -13,14 +13,12 @@ interface DropDownStyleProps {
 
 interface DropDownItemProps {
   isSelected: boolean;
-  popoverTarget?: string;
 }
 
 const DropDown: React.FC<DropDownProps> = ({
   items,
   onClick,
   label,
-  popoverTarget,
 }): React.ReactElement => {
   const {
     handleItemClick,
@@ -51,7 +49,6 @@ const DropDown: React.FC<DropDownProps> = ({
             key={item.id}
             className={item.id}
             isSelected={item.id === selectedItem.id}
-            popoverTarget={popoverTarget}
             
           >
             <DropDownItemDot isSelected={item.id === selectedItem.id}>•</DropDownItemDot>
@@ -105,8 +102,6 @@ const DropDownItem = styled.div<DropDownItemProps>`
   font-size: 17px;
   border-radius: 10px;
   ${({ isSelected }) => isSelected && BoxInnerShadow};
-  ${({ popoverTarget }) => popoverTarget && `data-popover-target: "${popoverTarget}";`}
-  ${({ popoverTarget }) => popoverTarget && `data-popover-trigger: "click";`}
 
   :hover {
     cursor: pointer;
