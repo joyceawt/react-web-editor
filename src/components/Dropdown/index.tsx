@@ -49,6 +49,7 @@ const DropDown: React.FC<DropDownProps> = ({
             key={item.id}
             className={item.id}
             isSelected={item.id === selectedItem.id}
+            
           >
             <DropDownItemDot isSelected={item.id === selectedItem.id}>•</DropDownItemDot>
             {item.label}

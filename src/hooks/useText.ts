@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import sanitizeHtml from "sanitize-html";
 
 import { INITIAL_TEXT, SANITIZE_CONFIGURATION } from "../constants/ui";
@@ -37,6 +37,10 @@ const useText = ({
   const [fontStyle, setFontStyle] = useState<string>(initialFontStyle);
 
   const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSavedHtml(initialText || INITIAL_TEXT);
+  }, [initialText]);
 
   const handleInputChange = (): void => {
     if (!textRef.current) {
