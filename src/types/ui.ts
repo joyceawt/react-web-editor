@@ -56,6 +56,7 @@ export interface DropDownProps {
   items: DropDownContent[];
   onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void;
   label?: string;
+  popoverTarget?: string;
 }
 
 export interface Location {
